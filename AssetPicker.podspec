@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "6.0"
 
-  s.source       = { :git => "https://github.com/taruntyagi697/AssetPicker.git", :tag => "v1.4" }
+  s.source       = { :git => "https://github.com/steve21124/AssetPicker.git"}
   
   s.source_files  = "AssetPicker/*.{h,m}"
   

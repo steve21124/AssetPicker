@@ -166,10 +166,13 @@ typedef enum
 
 -(void)itemTapped:(UITapGestureRecognizer*)tapRecognizer
 {
-    if((selectedAssetsCount == maximumAssetsAllowed ||
-        selectedPhotosCount == maximumPhotosAllowed ||
-        selectedVideosCount == maximumVideosAllowed) && !self.selected)
+    if((selectedAssetsCount >= maximumAssetsAllowed ||
+        selectedPhotosCount >= maximumPhotosAllowed ||
+        selectedVideosCount >= maximumVideosAllowed) && !self.selected)
     {
+        //once maximum limit reach. close it.
+        
+        
         NSString* title = @"Maximum Limit Reached!";
         NSString* message = @"";
         NSString* photoStr = (maximumPhotosAllowed != 1) ? @"Photos" : @"Photo";
@@ -1919,6 +1922,13 @@ typedef enum
         [selectedAssets removeAsset:asset];
     
     [self reloadSectionHeadersAndAnyVisibleMatchingItemUsingIndexPath:indexPath];
+    
+    if((selectedAssetsCount >= maximumAssetsAllowed ||
+        selectedPhotosCount >= maximumPhotosAllowed ||
+        selectedVideosCount >= maximumVideosAllowed))
+    {
+        [doneBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 -(void)collectionView:(UICollectionView*)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView*)view forElementOfKind:(NSString*)elementKind atIndexPath:(NSIndexPath*)indexPath
