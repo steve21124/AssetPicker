@@ -1923,9 +1923,7 @@ typedef enum
     
     [self reloadSectionHeadersAndAnyVisibleMatchingItemUsingIndexPath:indexPath];
     
-    if((selectedAssetsCount >= maximumAssetsAllowed ||
-        selectedPhotosCount >= maximumPhotosAllowed ||
-        selectedVideosCount >= maximumVideosAllowed))
+    if(selectedPhotosCount >= maximumPhotosAllowed)
     {
         [doneBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
